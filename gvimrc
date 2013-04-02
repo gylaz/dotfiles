@@ -1,3 +1,6 @@
+" Set the font
+set guifont=Inconsolata:h18
+
 " No audible bell
 set vb
 

@@ -1,5 +1,7 @@
 [push]
-  default = upstream
+  default = current
+[merge]
+  ff = only
 [color]
   ui = auto
 [alias]
@@ -14,6 +16,7 @@
   pr = !hub pull-request
   st = status
   up = !git fetch origin && git rebase origin/master
+  irb = "!f() { git rebase -i HEAD~$1; }; f"
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input

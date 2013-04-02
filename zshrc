@@ -45,11 +45,15 @@ setopt prompt_subst
 # prompt
 export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
 
+# command history store
+setopt append_history inc_append_history hist_ignore_all_dups
+
+HISTFILE=~/.zhistory
+SAVEHIST=4096
+HISTSIZE=4096
+
 # ignore duplicate history entries
 setopt histignoredups
-
-# keep TONS of history
-export HISTSIZE=4096
 
 # look for ey config in project dirs
 export EYRC=./.eyrc
@@ -63,8 +67,11 @@ setopt AUTOCD
 setopt AUTOPUSHD PUSHDMINUS PUSHDSILENT PUSHDTOHOME
 setopt cdablevars
 
-# Try to correct command line spelling
-setopt CORRECT CORRECT_ALL
-
 # Enable extended globbing
 setopt EXTENDED_GLOB
+
+# Tab complete globs
+setopt GLOB_COMPLETE
+
+# Enable rbenv shims
+eval "$(rbenv init -)"

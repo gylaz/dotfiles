@@ -1,0 +1,7 @@
+[user]
+  email = greg@thoughtbot.com
+[push]
+  default = current
+[alias]
+  br = branch
+  irb = "!f() { git rebase -i HEAD~$1; }; f"
