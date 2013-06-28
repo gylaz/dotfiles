@@ -22,3 +22,9 @@ alias migrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db
 alias m="migrate"
 alias s="rspec"
 alias z="zeus"
+
+# Tmux
+alias ta="tmux attach"
+
+# Source custom aliases
+[[ -f .aliases.local ]] && source ~/.aliases.local

@@ -2,28 +2,28 @@
 set background=dark
 colorscheme solarized
 
+set autowriteall
 set numberwidth=4
 set cursorcolumn   " indicate the current column
 set cursorline     " indicate the current line
 set colorcolumn=80 " show character-limit line
+set scrolloff=10   " show n number of lines below cursor when scrolling
 
-" bind \ (backward slash) to grep shortcut
+" custom Grep command (searche files and opens quickfix window)
 command -nargs=+ -complete=file -bar Grep silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Grep<SPACE>
 
-" bind K to grep word under cursor
+" Custom bindings
+" show the terminal
+nnoremap <Leader>n :!<CR>
+" grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" shortcut to custom Grep command
+nnoremap <Leader>g :Grep<SPACE>
 
 " Improve syntax highlighting
 au BufRead,BufNewFile *.jbuilder set filetype=ruby
 au BufRead,BufNewFile *.hamlc set filetype=haml
 au BufRead,BufNewFile *.hamlc.erb set filetype=haml
-
-" switch windows
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
 
 " Overwrite CtrlP defaults
 let g:ctrlp_by_filename = 1

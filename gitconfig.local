@@ -5,3 +5,5 @@
 [alias]
   br = branch
   irb = "!f() { git rebase -i HEAD~$1; }; f"
+  pull-pr = !sh -c 'git fetch origin pull/$1/head:pr$1' -
+  ss = stash show -u
