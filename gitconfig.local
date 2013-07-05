@@ -4,6 +4,8 @@
   default = current
 [alias]
   br = branch
+  dc = diff --cached
   irb = "!f() { git rebase -i HEAD~$1; }; f"
+  l = log --format='%Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s'
   pull-pr = !sh -c 'git fetch origin pull/$1/head:pr$1' -
   ss = stash show -u
