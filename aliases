@@ -18,7 +18,7 @@ alias b="bundle"
 alias be="bundle exec"
 
 # Rails
-alias migrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare"
+alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias m="migrate"
 alias s="rspec"
 alias z="zeus"
@@ -26,5 +26,5 @@ alias z="zeus"
 # Tmux
 alias ta="tmux attach"
 
-# Source custom aliases
-[[ -f .aliases.local ]] && source ~/.aliases.local
+# Include custom aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
