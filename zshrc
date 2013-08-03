@@ -1,13 +1,31 @@
-# load our own completion functions
-fpath=(~/.zsh/completion $fpath)
+# adds the current branch name in green
+git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null)
+  if [[ -n $ref ]]; then
+    echo "[%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}]"
+  fi
+}
+
+# makes color constants available
+autoload -U colors
+colors
+
+# enable colored output from ls, etc
+export CLICOLOR=1
 
 # completion
 autoload -U compinit
 compinit
 
+# load our own completion functions
+fpath=(~/.zsh/completion $fpath)
+
 for function in ~/.zsh/functions/*; do
   source $function
 done
+
+# expand functions in the prompt
+setopt prompt_subst
 
 # automatically enter directories without cd
 setopt auto_cd
@@ -34,11 +52,8 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
-# expand functions in the prompt
-setopt prompt_subst
-
 # prompt
-export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
+export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%1~%{$reset_color%}] '
 
 # command history store
 setopt append_history inc_append_history hist_ignore_all_dups
@@ -68,11 +83,17 @@ setopt EXTENDED_GLOB
 # Tab complete globs
 setopt GLOB_COMPLETE
 
-# Enable rbenv shims
-eval "$(rbenv init -)"
+export GOPATH=$HOME/code/personal/go-lab
+export PATH=$HOME/.bin:$PATH:/usr/local/mysql/bin
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Enable rbenv shims
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Enable Autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh

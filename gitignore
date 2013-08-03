@@ -1,10 +1,12 @@
+!tmp/cache/.keep
 *.DS_Store
 *.sw[nop]
 .bundle
+.eyrc
+.ruby-version
 db/*.sqlite3
 log/*.log
 rerun.txt
 tags
 tmp/**/*
-!tmp/cache/.keep
 zeus.json
