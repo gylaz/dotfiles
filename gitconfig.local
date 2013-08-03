@@ -5,7 +5,9 @@
 [alias]
   br = branch
   dc = diff --cached
-  irb = "!f() { git rebase -i HEAD~$1; }; f"
-  l = log --format='%Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s'
+  l = log --pretty=colored
   pull-pr = !sh -c 'git fetch origin pull/$1/head:pr$1' -
+  rebase-back = "!f() { git rebase -i HEAD~$1; }; f"
   ss = stash show -u
+[pretty]
+  colored = format:%Cblue%h %Cgreen[%cr] %Creset(%an) %s
