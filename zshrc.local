@@ -1,0 +1,2 @@
+cdpath=($HOME/code/thoughtbot $HOME/code/clients $HOME/code/personal)
+source ~/.zsh/terminal-same-directory-fix
