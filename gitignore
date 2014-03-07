@@ -3,10 +3,9 @@
 *.sw[nop]
 .bundle
 .eyrc
-.ruby-version
-db/*.sqlite3
-log/*.log
-rerun.txt
-tags
-tmp/**/*
+/db/*.sqlite3
+/log/*.log
+/tags
+/tmp/**/*
 zeus.json
+custom_plan.rb

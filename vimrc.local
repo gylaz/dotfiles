@@ -2,20 +2,24 @@
 set background=dark
 colorscheme solarized
 
-set numberwidth=4
-set colorcolumn=80 " show character-limit line
-set scrolloff=10   " show n number of lines below cursor when scrolling
-set cursorline     " indicate the current line
 set autowrite
+set colorcolumn=+1 " show character-limit line
+set lazyredraw     " Improves redrawing
+set numberwidth=4
+set relativenumber " show relative line numbers
+set scrolloff=5    " show n number of lines below cursor when scrolling
+set textwidth=80
+
+set wildmenu wildmode=longest:full,full
 
 " custom Grep command (searche files and opens quickfix window)
-command -nargs=+ -complete=file -bar Grep silent! grep! <args>|botright cwindow|redraw!
+command -nargs=+ -complete=file Grep silent grep! <args>|botright cwindow|redraw!
 
 " Custom bindings
 " show the terminal
 nnoremap <Leader>n :!<CR>
 " grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:botright cwindow<CR>
 " shortcut to custom Grep command
 nnoremap <Leader>g :Grep<SPACE>
 " redraw screen
@@ -29,3 +33,6 @@ au BufRead,BufNewFile *.go set filetype=go
 
 " Overwrite CtrlP defaults
 let g:ctrlp_by_filename = 1
+
+" Use iterm for vim-rspec with MacVim
+let g:rspec_runner = "os_x_terminal"
