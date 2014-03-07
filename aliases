@@ -23,8 +23,5 @@ alias m="migrate"
 alias s="rspec"
 alias z="zeus"
 
-# Tmux
-alias ta="tmux attach"
-
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

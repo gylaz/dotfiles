@@ -4,9 +4,9 @@ thoughtbot dotfiles
 Requirements
 ------------
 
-Set zsh as your login shell.
+Set zsh as your login shell:
 
-    chsh -s /bin/zsh
+    chsh -s $(which zsh)
 
 Install
 -------
@@ -16,16 +16,24 @@ Clone onto your laptop:
     git clone git://github.com/thoughtbot/dotfiles.git
 
 (Or, [fork and keep your fork
-updated](http://robots.thoughtbot.com/post/5133345960)).
+updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
+
+Install [rcm](https://github.com/thoughtbot/rcm):
+
+    brew bundle
 
 Install:
 
-    cd dotfiles
-    ./install.sh
+    rcup -d dotfiles -x README.md -x LICENSE
 
-This will create symlinks for config files in your home directory.
+This will create symlinks for config files in your home directory. The
+`-x` options, which exclude the `README.md` and `LICENSE` files, are
+needed during installation but can be skipped once the `.rcrc`
+configuration file is symlinked in.
 
-You can safely run `./install.sh` multiple times to update.
+You can safely run `rcup` multiple times to update:
+
+    rcup
 
 Make your own customizations
 ----------------------------
@@ -35,7 +43,9 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.aliases.local`
 * `~/.gitconfig.local`
 * `~/.gvimrc.local`
+* `~/.tmux.conf.local`
 * `~/.vimrc.local`
+* `~/.vimrc.bundles.local`
 * `~/.zshrc.local`
 
 For example, your `~/.aliases.local` might look like this:
@@ -55,11 +65,13 @@ Your `~/.gitconfig.local` might look like this:
 
 Your `~/.zshrc.local` might look like this:
 
-    # load rbenv
-    eval "$(rbenv init -)"
-
     # recommended by brew doctor
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+Your `~/.vimrc.bundles.local` might look like this:
+
+    Bundle 'Lokaltog/vim-powerline'
+    Bundle 'stephenmckinney/vim-solarized-powerline'
 
 What's in it?
 -------------
@@ -81,7 +93,7 @@ What's in it?
 * Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
 * Use [Vundle](https://github.com/gmarik/vundle) to manage plugins.
 
-[tmux](http://robots.thoughtbot.com/post/2641409235/a-tmux-crash-course)
+[tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
 
 * Improve color resolution.
@@ -96,6 +108,11 @@ configuration:
 * Adds a `merge-branch` alias to merge feature branches into master.
 * Adds an `up` alias to fetch and rebase `origin/master` into the feature
   branch. Use `git up -i` for interactive rebases.
+
+[Ruby](https://www.ruby-lang.org/en/) configuration:
+
+* Add trusted binstubs to the `PATH`.
+* Load rbenv into the shell, adding shims onto our `PATH`.
 
 Shell aliases and scripts:
 
@@ -125,5 +142,5 @@ in this project.
 Dotfiles is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
-Dotfiles is © 2009-2013 thoughtbot, inc. It is free software and may be
+Dotfiles is © 2009-2014 thoughtbot, inc. It is free software and may be
 redistributed under the terms specified in the [LICENSE](LICENSE) file.

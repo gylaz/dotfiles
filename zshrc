@@ -22,24 +22,30 @@ autoload -U colors
 colors
 
 # expand functions in the prompt
-setopt PROMPT_SUBST
+setopt promptsubst
 
 # command history store
-setopt APPEND_HISTORY INC_APPEND_HISTORY HIST_IGNORE_ALL_DUPS
+setopt append_history inc_append_history hist_ignore_all_dups
 
 HISTFILE=~/.zhistory
 SAVEHIST=4096
 HISTSIZE=4096
 
-# awesome cd movements from zshkit
-setopt AUTO_CD AUTO_PUSHD PUSHD_MINUS PUSHD_SILENT PUSHD_TO_HOME CD_ABLE_VARS
-DIRSTACKSIZE=5
-
-# Enable extended globbing
-setopt EXTENDED_GLOB
-
 # Tab complete globs
 setopt GLOB_COMPLETE
+
+# awesome cd movements from zshkit
+setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
+DIRSTACKSIZE=5
+
+# Try to correct command line spelling
+setopt correct correctall
+
+# Enable extended globbing
+setopt extendedglob
+
+# Allow [ or ] whereever you want
+unsetopt nomatch
 
 # vi mode
 bindkey -v
@@ -71,14 +77,16 @@ export EYRC=./.eyrc
 export GOPATH=$HOME/code/personal/go-lab
 export PATH=$HOME/.bin:$PATH:/usr/local/mysql/bin
 
+# load rbenv if available
+if which rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi
+
+# mkdir .git/safe in the root of repositories you trust
+export PATH=".git/safe/../../bin:$PATH"
+
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-# Enable rbenv shims
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Enable Autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
