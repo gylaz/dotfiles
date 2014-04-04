@@ -6,6 +6,9 @@ git_prompt_info() {
   fi
 }
 
+# expand functions in the prompt
+setopt promptsubst
+
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
 
@@ -13,6 +16,7 @@ fpath=(~/.zsh/completion $fpath)
 autoload -U compinit
 compinit
 
+# load custom functions
 for function in ~/.zsh/functions/*; do
   source $function
 done
@@ -20,9 +24,6 @@ done
 # makes color constants available
 autoload -U colors
 colors
-
-# expand functions in the prompt
-setopt promptsubst
 
 # command history store
 setopt append_history inc_append_history hist_ignore_all_dups
@@ -74,13 +75,15 @@ export EDITOR=$VISUAL
 # look for ey config in project dirs
 export EYRC=./.eyrc
 
+# export path for Golang
 export GOPATH=$HOME/code/personal/go-lab
-export PATH=$HOME/.bin:$PATH:/usr/local/mysql/bin
 
 # load rbenv if available
 if which rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash)"
 fi
+
+export PATH=$GOPATH/bin:$HOME/.bin:$PATH:/usr/local/mysql/bin
 
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
