@@ -1,13 +1,12 @@
-# adds the current branch name in green
+# modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [[ -n $ref ]]; then
     echo "[%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}]"
   fi
 }
-
-# expand functions in the prompt
 setopt promptsubst
+export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
@@ -16,7 +15,7 @@ fpath=(~/.zsh/completion $fpath)
 autoload -U compinit
 compinit
 
-# load custom functions
+# load custom executable functions
 for function in ~/.zsh/functions/*; do
   source $function
 done
@@ -26,21 +25,17 @@ autoload -U colors
 colors
 
 # command history store
-setopt append_history inc_append_history hist_ignore_all_dups
-
+setopt inc_append_history hist_ignore_all_dups
 HISTFILE=~/.zhistory
 SAVEHIST=4096
 HISTSIZE=4096
 
-# Tab complete globs
-setopt GLOB_COMPLETE
+# enable colored output from ls, etc
+export CLICOLOR=1
 
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
-
-# Try to correct command line spelling
-setopt correct correctall
 
 # Enable extended globbing
 setopt extendedglob
@@ -62,28 +57,17 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
-# enable colored output from ls, etc
-export CLICOLOR=1
-
-# prompt
-export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%1~%{$reset_color%}] '
-
 # use vim as the visual editor
 export VISUAL=vim
 export EDITOR=$VISUAL
-
-# look for ey config in project dirs
-export EYRC=./.eyrc
-
-# export path for Golang
-export GOPATH=$HOME/code/personal/go-lab
 
 # load rbenv if available
 if which rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash)"
 fi
 
-export PATH=$GOPATH/bin:$HOME/.bin:$PATH:/usr/local/mysql/bin
+# load thoughtbot/dotfiles scripts
+export PATH="$HOME/.bin:$PATH"
 
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
