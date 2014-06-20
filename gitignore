@@ -1,4 +1,3 @@
-!tmp/cache/.keep
 *.DS_Store
 *.sw[nop]
 .bundle

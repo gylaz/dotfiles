@@ -1,7 +1,5 @@
 [user]
   email = greg@thoughtbot.com
-[push]
-  default = current
 [alias]
   br = branch
   dc = diff --cached

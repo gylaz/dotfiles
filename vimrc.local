@@ -24,11 +24,14 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:botright cwindow<CR>
 nnoremap <Leader>g :Grep<SPACE>
 " redraw screen
 nnoremap <Leader>r :redraw!<CR>
+" run interactive shell command
+nnoremap <leader>ri :RunInInteractiveShell<space>
 
 " Improve syntax highlighting
 au BufRead,BufNewFile *.jbuilder set filetype=ruby
 au BufRead,BufNewFile *.hamlc set filetype=haml
 au BufRead,BufNewFile *.hamlc.erb set filetype=haml
+au BufRead,BufNewFile *.coffee.erb set filetype=coffee
 au BufRead,BufNewFile *.go set filetype=go
 
 " Overwrite CtrlP defaults
@@ -36,16 +39,3 @@ let g:ctrlp_by_filename = 1
 
 " Use iterm for vim-rspec with MacVim
 let g:rspec_runner = "os_x_terminal"
-
-function! s:RunInInteractiveShell(command)
-  let saved_shellcmdflag = &shellcmdflag
-  set shellcmdflag+=il
-  try
-    execute '!'. a:command
-  finally
-    execute 'set shellcmdflag=' . saved_shellcmdflag
-  endtry
-endfunction
-
-command! -nargs=1 RunInInteractiveShell call <sid>RunInInteractiveShell(<f-args>)
-nnoremap <Leader>r :RunInInteractiveShell 

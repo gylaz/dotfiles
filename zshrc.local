@@ -5,6 +5,5 @@ source ~/.zsh/terminal-same-directory-fix
 
 cdpath=($HOME/code/thoughtbot $HOME/code/clients $HOME/code/personal)
 
-export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%1~%{$reset_color%}] '
 export GOPATH=$HOME/code/personal/go-lab
 export PATH=$GOPATH/bin:$PATH:/usr/local/mysql/bin
