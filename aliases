@@ -15,13 +15,14 @@ alias v="$VISUAL"
 
 # Bundler
 alias b="bundle"
-alias be="bundle exec"
+
+# Tests and Specs
+alias t="ruby -I test"
 
 # Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
+alias migrate="rake db:migrate db:rollback && rake db:migrate"
 alias m="migrate"
 alias s="rspec"
-alias z="zeus"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

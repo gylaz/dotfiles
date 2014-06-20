@@ -1,2 +1,5 @@
+# Bundler
+alias be="bundle exec"
+
 # Tmux
 alias ta="tmux attach"
