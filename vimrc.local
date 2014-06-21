@@ -3,12 +3,10 @@ set background=dark
 colorscheme solarized
 
 set autowrite
-set colorcolumn=+1 " show character-limit line
 set lazyredraw     " Improves redrawing
 set numberwidth=4
 set relativenumber " show relative line numbers
 set scrolloff=5    " show n number of lines below cursor when scrolling
-set textwidth=80
 
 set wildmenu wildmode=longest:full,full
 
