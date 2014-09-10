@@ -4,7 +4,6 @@
   br = branch
   dc = diff --cached
   l = log --pretty=colored
-  pull-pr = !sh -c 'git fetch origin pull/$1/head:pr$1' -
   rebase-back = "!f() { git rebase -i HEAD~$1; }; f"
   ss = stash show -u
 [pretty]
