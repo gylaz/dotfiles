@@ -37,6 +37,3 @@ let g:ctrlp_by_filename = 1
 
 " Use iterm for vim-rspec with MacVim
 let g:rspec_runner = "os_x_terminal"
-
-" open vim-fugitive's Gdiff in vertical split always
-set diffopt+=vertical
