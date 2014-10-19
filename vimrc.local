@@ -2,13 +2,8 @@
 set background=dark
 colorscheme solarized
 
-set autowrite
 set lazyredraw     " Improves redrawing
 set numberwidth=4
-set relativenumber " show relative line numbers
-set scrolloff=5    " show n number of lines below cursor when scrolling
-
-set wildmenu wildmode=longest:full,full
 
 " custom Grep command (searche files and opens quickfix window)
 command -nargs=+ -complete=file Grep silent grep! <args>|botright cwindow|redraw!
@@ -24,6 +19,7 @@ nnoremap <Leader>g :Grep<SPACE>
 nnoremap <Leader>r :redraw!<CR>
 " run interactive shell command
 nnoremap <leader>ri :RunInInteractiveShell<space>
+nnoremap <leader>e :e <C-R>=expand("%:h") . "/" <CR>
 
 " Improve syntax highlighting
 au BufRead,BufNewFile *.jbuilder set filetype=ruby
@@ -35,5 +31,4 @@ au BufRead,BufNewFile *.go set filetype=go
 " Overwrite CtrlP defaults
 let g:ctrlp_by_filename = 1
 
-" Use iterm for vim-rspec with MacVim
-let g:rspec_runner = "os_x_terminal"
+let g:rspec_runner = "os_x_iterm"
