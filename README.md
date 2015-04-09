@@ -20,7 +20,8 @@ updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 
-    brew bundle dotfiles/Brewfile
+    brew tap thoughtbot/formulae
+    brew install rcm
 
 Install the dotfiles:
 
@@ -30,7 +31,7 @@ This command will create symlinks for config files in your home directory.
 Setting the `RCRC` environment variable tells `rcup` to use standard
 configuration options:
 
-* Exclude the `README.md`, `LICENSE`, and `Brewfile` files, which are part of
+* Exclude the `README.md` and `LICENSE` files, which are part of
   the `dotfiles` repository but do not need to be symlinked in.
 * Give precedence to personal overrides which by default are placed in
   `~/dotfiles-local`
@@ -45,6 +46,7 @@ Make your own customizations
 Put your customizations in dotfiles appended with `.local`:
 
 * `~/.aliases.local`
+* `~/.git_template.local/*`
 * `~/.gitconfig.local`
 * `~/.gvimrc.local`
 * `~/.psqlrc.local` (we supply a blank `.psqlrc.local` to prevent `psql` from
@@ -71,12 +73,22 @@ Your `~/.gitconfig.local` might look like this:
       name = Dan Croak
       email = dan@thoughtbot.com
 
+Your `~/.vimrc.local` might look like this:
+
+    " Color scheme
+    colorscheme github
+    highlight NonText guibg=#060606
+    highlight Folded  guibg=#0A0A0A guifg=#9090D0
+
 Your `~/.zshenv.local` might look like this:
 
     # load pyenv if available
     if which pyenv &>/dev/null ; then
       eval "$(pyenv init -)"
     fi
+
+To extend your `git` hooks, create executable scripts in
+`~/.git_template.local/hooks/*` files.
 
 Your `~/.zshrc.local` might look like this:
 
@@ -149,7 +161,6 @@ What's in it?
 * Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
   available.
 * Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
-* Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
 * Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
   creating non-existing directories before writing the buffer.
 * Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
@@ -170,7 +181,8 @@ configuration:
 * Adds an `up` alias to fetch and rebase `origin/master` into the feature
   branch. Use `git up -i` for interactive rebases.
 * Adds `post-{checkout,commit,merge}` hooks to re-index your ctags.
-  To extend your `git` hooks, create executable scripts in `~/.git_template.local/hooks/post-{commit,checkout,merge}`
+* Adds `pre-commit` and `prepare-commit-msg` stubs that delegate to your local
+  config.
 
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 
@@ -189,18 +201,33 @@ Shell aliases and scripts:
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
-Credits
--------
+Thanks
+------
 
 Thank you, [contributors](https://github.com/thoughtbot/dotfiles/contributors)!
 Also, thank you to Corey Haines, Gary Bernhardt, and others for sharing your
 dotfiles and other shell scripts from which we derived inspiration for items
 in this project.
 
-![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
+License
+-------
 
-Dotfiles is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
+dotfiles is copyright © 2009-2015 thoughtbot. It is free software, and may be
+redistributed under the terms specified in the [`LICENSE`] file.
+
+[`LICENSE`]: /LICENSE
+
+About thoughtbot
+----------------
+
+![thoughtbot](https://thoughtbot.com/logo.png)
+
+dotfiles is maintained and funded by thoughtbot, inc.
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
-Dotfiles is © 2009-2014 thoughtbot, inc. It is free software and may be
-redistributed under the terms specified in the [LICENSE](LICENSE) file.
+We love open source software!
+See [our other projects][community].
+We are [available for hire][hire].
+
+[community]: https://thoughtbot.com/community?utm_source=github
+[hire]: https://thoughtbot.com/hire-us?utm_source=github

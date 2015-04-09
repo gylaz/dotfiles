@@ -1,5 +1,6 @@
+coverage
 log
 tags
 tmp
 vendor
-coverage
+.git/
