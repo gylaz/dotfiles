@@ -1,0 +1,2 @@
+export GOPATH=$HOME/code/personal/go-lab
+export PATH=$GOPATH/bin:$PATH:/usr/local/mysql/bin

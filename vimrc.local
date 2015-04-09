@@ -1,34 +1,37 @@
-" Color scheme
-set background=dark
-colorscheme solarized
-
-set lazyredraw     " Improves redrawing
+set lazyredraw " Improves redrawing
 set numberwidth=4
-
-" custom Grep command (searche files and opens quickfix window)
-command -nargs=+ -complete=file Grep silent grep! <args>|botright cwindow|redraw!
+set background=dark
+set cursorline
+colorscheme tomorrow-night
 
 " Custom bindings
 " show the terminal
 nnoremap <Leader>n :!<CR>
 " grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:botright cwindow<CR>
+nnoremap K :Ag! <C-R><C-W><CR>
 " shortcut to custom Grep command
-nnoremap <Leader>g :Grep<SPACE>
+nnoremap <Leader>g :Ag!<SPACE>
 " redraw screen
 nnoremap <Leader>r :redraw!<CR>
 " run interactive shell command
 nnoremap <leader>ri :RunInInteractiveShell<space>
+" edit in current directory
 nnoremap <leader>e :e <C-R>=expand("%:h") . "/" <CR>
 
 " Improve syntax highlighting
 au BufRead,BufNewFile *.jbuilder set filetype=ruby
-au BufRead,BufNewFile *.hamlc set filetype=haml
-au BufRead,BufNewFile *.hamlc.erb set filetype=haml
 au BufRead,BufNewFile *.coffee.erb set filetype=coffee
 au BufRead,BufNewFile *.go set filetype=go
 
 " Overwrite CtrlP defaults
 let g:ctrlp_by_filename = 1
-
+" Overwrite vim-rspec terminal
 let g:rspec_runner = "os_x_iterm"
+
+let g:rails_projections = {
+  \ "app/assets/javascripts/*.js": {
+  \   "alternate": "spec/javascripts/%s.spec.js"
+  \ },
+  \ "spec/javascripts/*.spec.js": {
+  \   "alternate": "app/assets/javascripts/%s.js"
+  \ }}

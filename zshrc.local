@@ -1,14 +1,6 @@
 # Tab complete globs
 setopt GLOB_COMPLETE
 
+cdpath=($HOME/Dev)
+
 source ~/.zsh/terminal-same-directory-fix
-
-cdpath=($HOME/Code)
-
-# Increase ulimit for Gulp
-ulimit -n 10240
-
-export GOPATH=$HOME/code/personal/go-lab
-export PATH=$GOPATH/bin:$PATH:/usr/local/mysql/bin
-
-source $(brew --prefix nvm)/nvm.sh

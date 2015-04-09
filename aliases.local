@@ -3,3 +3,9 @@ alias be="bundle exec"
 
 # Tmux
 alias ta="tmux attach"
+
+# Parity
+alias prod="production"
+
+# Diff
+alias diff="colordiff"
