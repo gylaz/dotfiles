@@ -1,4 +1,4 @@
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'rking/ag.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'elixir-lang/vim-elixir'
+Plug 'rking/ag.vim'
