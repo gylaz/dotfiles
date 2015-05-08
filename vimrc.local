@@ -10,7 +10,7 @@ nnoremap <Leader>n :!<CR>
 " grep word under cursor
 nnoremap K :Ag! <C-R><C-W><CR>
 " shortcut to custom Grep command
-nnoremap <Leader>g :Ag!<SPACE>
+nnoremap <Leader>a :Ag!<SPACE>
 " redraw screen
 nnoremap <Leader>r :redraw!<CR>
 " run interactive shell command
