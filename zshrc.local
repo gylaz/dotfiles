@@ -4,3 +4,8 @@ setopt GLOB_COMPLETE
 cdpath=($HOME/Dev $GOPATH/src/github.com)
 
 source ~/.zsh/terminal-same-directory-fix
+
+export GOPATH=$HOME/Dev/go-lab
+export PATH=$GOPATH/bin:$PATH:/usr/local/mysql/bin
+export HOMEBREW_GITHUB_API_TOKEN=
+export DISABLE_SPRING=1
