@@ -23,19 +23,10 @@ nnoremap <leader>e :e <C-R>=expand("%:h") . "/" <CR>
 " Improve syntax highlighting
 autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 autocmd BufRead,BufNewFile *.coffee.erb set filetype=coffee
-autocmd BufRead,BufNewFile *.go set filetype=go
 autocmd BufRead,BufNewFile *.hbs set filetype=html
-
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
 
 " Overwrite CtrlP defaults
 let g:ctrlp_by_filename = 1
-" Overwrite vim-rspec terminal
-" let g:rspec_runner = "os_x_iterm"
-" let g:rspec_command = "rspec -fd {spec}"
 
 let g:rails_projections = {
   \ "app/assets/javascripts/*.js": {
