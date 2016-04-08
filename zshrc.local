@@ -1,6 +1,6 @@
 # Tab complete globs
 setopt GLOB_COMPLETE
 
-cdpath=($HOME/Dev)
+cdpath=($HOME/Dev $GOPATH/src/github.com)
 
 source ~/.zsh/terminal-same-directory-fix

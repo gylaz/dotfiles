@@ -11,6 +11,7 @@
   ca = commit --amend -v
   ci = commit -v
   co = checkout
+  pf = push --force-with-lease
   st = status
 [core]
   excludesfile = ~/.gitignore

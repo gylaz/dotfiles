@@ -1,2 +1,4 @@
-export GOPATH=$HOME/code/personal/go-lab
+export GOPATH=$HOME/Dev/go-lab
 export PATH=$GOPATH/bin:$PATH:/usr/local/mysql/bin
+export HOMEBREW_GITHUB_API_TOKEN=eaac7139fb932d8c59626834543d6cfe89fef4b8
+export DISABLE_SPRING=1
