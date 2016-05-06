@@ -1,5 +1,6 @@
 [user]
   email = greg@thoughtbot.com
+  signingkey = 20E92597
 [alias]
   br = branch
   dc = diff --cached
@@ -8,3 +9,7 @@
   ss = stash show -u
 [pretty]
   colored = format:%Cblue%h %Cgreen[%cr] %Creset(%an) %s
+[commit]
+  gpgSign = true
+[gpg]
+  program = gpg2
