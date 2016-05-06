@@ -1,2 +1,2 @@
 EXCLUDES="README.md LICENSE"
-DOTFILES_DIRS="$HOME/Dev/personal/dotfiles"
+DOTFILES_DIRS="$HOME/Dev/src/github.com/gylaz/dotfiles"
