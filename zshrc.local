@@ -1,11 +1,11 @@
 # Tab complete globs
 setopt GLOB_COMPLETE
 
-cdpath=($HOME/Dev $GOPATH/src/github.com)
-
 source ~/.zsh/terminal-same-directory-fix
 
-export GOPATH=$HOME/Dev/go-lab
+export GOPATH=$HOME/Dev
 export PATH=$GOPATH/bin:$PATH:/usr/local/mysql/bin
 export HOMEBREW_GITHUB_API_TOKEN=
 export DISABLE_SPRING=1
+
+cdpath=($HOME/Dev $GOPATH/src/github.com)

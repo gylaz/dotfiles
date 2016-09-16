@@ -25,8 +25,7 @@ autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 autocmd BufRead,BufNewFile *.coffee.erb set filetype=coffee
 autocmd BufRead,BufNewFile *.hbs set filetype=html
 
-" Format Go files on save
-autocmd BufWritePre *.go GoFmt
+" GoFmt silent failures
 let g:go_fmt_fail_silently = 1
 
 " Overwrite CtrlP defaults
