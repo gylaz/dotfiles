@@ -31,7 +31,12 @@ let g:go_fmt_fail_silently = 1
 " Overwrite CtrlP defaults
 let g:ctrlp_by_filename = 1
 
-let g:rails_projections = {
+" Configure SplitJoin to split Ruby
+let g:splitjoin_trailing_comma = 1
+let g:splitjoin_ruby_hanging_args = 0
+let g:splitjoin_ruby_curly_braces = 0
+
+let g:projectionist_heuristics = {
   \ "app/assets/javascripts/*.js": {
   \   "alternate": "spec/javascripts/{}.spec.js"
   \ },
