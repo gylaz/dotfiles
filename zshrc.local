@@ -4,8 +4,16 @@ setopt GLOB_COMPLETE
 source ~/.zsh/terminal-same-directory-fix
 
 export GOPATH=$HOME/Dev
-export PATH=$GOPATH/bin:$PATH:/usr/local/mysql/bin
+export PATH=$GOPATH/bin:$HOME/.config/yarn/global/node_modules/.bin
 export HOMEBREW_GITHUB_API_TOKEN=
 export DISABLE_SPRING=1
+export GPG_TTY=$(tty)
 
 cdpath=($HOME/Dev $GOPATH/src/github.com)
+
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+  export SSH_AGENT_PID
+fi
