@@ -4,7 +4,7 @@ setopt GLOB_COMPLETE
 source ~/.zsh/terminal-same-directory-fix
 
 export GOPATH=$HOME/Dev
-export PATH=$GOPATH/bin:$HOME/.config/yarn/global/node_modules/.bin
+export PATH=$GOPATH/bin:$PATH:$HOME/.config/yarn/global/node_modules/.bin
 export HOMEBREW_GITHUB_API_TOKEN=
 export DISABLE_SPRING=1
 export GPG_TTY=$(tty)
