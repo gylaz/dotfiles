@@ -1,3 +1,4 @@
+set regexpengine=1
 set lazyredraw " Improves redrawing
 set numberwidth=4
 set background=dark
@@ -20,10 +21,18 @@ nnoremap <leader>ri :RunInInteractiveShell<space>
 " edit in current directory
 nnoremap <leader>e :e <C-R>=expand("%:h") . "/" <CR>
 
+" rename Esc to jk pressed together
+inoremap jk <Esc>
+inoremap kj <Esc>
+
 " Improve syntax highlighting
 autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 autocmd BufRead,BufNewFile *.coffee.erb set filetype=coffee
 autocmd BufRead,BufNewFile *.hbs set filetype=html
+augroup fmt
+  autocmd!
+  autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat prettier
+augroup END
 
 " GoFmt silent failures
 let g:go_fmt_fail_silently = 1
@@ -31,10 +40,19 @@ let g:go_fmt_fail_silently = 1
 " Overwrite CtrlP defaults
 let g:ctrlp_by_filename = 1
 
+" Configure Ag.vim to remove the newlines
+let g:ag_prg="ag --column --nogroup"
+
+" Configure Elm-format
+let g:elm_format_autosave = 1
+
 " Configure SplitJoin to split Ruby
 let g:splitjoin_trailing_comma = 1
 let g:splitjoin_ruby_hanging_args = 0
 let g:splitjoin_ruby_curly_braces = 0
+
+" Disable vim-go's K mapping
+let g:go_doc_keywordprg_enabled = 0
 
 let g:projectionist_heuristics = {
   \ "app/assets/javascripts/*.js": {
