@@ -5,7 +5,8 @@ set background=dark
 set cursorline
 set relativenumber
 set number
-colorscheme tomorrow-night
+set termguicolors
+colorscheme base16-atelier-savanna
 
 " Custom bindings
 " show the terminal
