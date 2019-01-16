@@ -1,17 +1,11 @@
 [user]
-  email = greg@thoughtbot.com
-  signingkey = 20E92597
+  email = greg.lazarev@gmail.com
 [alias]
   br = branch
   dc = diff --cached
   l = log --pretty=colored
   rebase-back = "!f() { git rebase -i HEAD~$1; }; f"
   ss = stash show -u
+  rc = rebase --continue
 [pretty]
   colored = format:%Cblue%h %Cgreen[%cr] %Creset(%an) %s
-[commit]
-  gpgSign = true
-[gpg]
-  program = gpg
-[credential]
-  helper = osxkeychain

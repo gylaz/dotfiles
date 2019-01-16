@@ -1,5 +1,9 @@
 !tags/
 !tmp/cache/.keep
+db/*.sqlite3
+log/
+node_modules/
+tmp/
 *.pyc
 *.sw[nop]
 .DS_Store
@@ -7,9 +11,5 @@
 .byebug_history
 .env
 .vscode/
-/bin/git-up
-/db/*.sqlite3
-/log/*.log
-/tmp/**/*
 rerun.txt
 tags
