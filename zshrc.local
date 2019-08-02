@@ -4,11 +4,11 @@ setopt GLOB_COMPLETE
 source ~/.zsh/terminal-same-directory-fix
 
 export GOPATH=$HOME/Dev
-export PATH=$GOPATH/bin:$PATH:$HOME/.config/yarn/global/node_modules/.bin
 export HOMEBREW_GITHUB_API_TOKEN=
 export DISABLE_SPRING=1
 export GPG_TTY=$(tty)
 export ERL_AFLAGS="-kernel shell_history enabled"
+export PATH=$GOPATH/bin:$PATH:$HOME/.config/yarn/global/node_modules/.bin
 
 cdpath=($HOME/Dev $GOPATH/src/github.com)
 
@@ -18,3 +18,5 @@ if [ -f "${HOME}/.gnupg/.gpg-agent-info" ]; then
   export SSH_AUTH_SOCK
   export SSH_AGENT_PID
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

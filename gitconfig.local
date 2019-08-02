@@ -4,6 +4,7 @@
   br = branch
   dc = diff --cached
   l = log --pretty=colored
+  rc = rebase --continue
   rebase-back = "!f() { git rebase -i HEAD~$1; }; f"
   ss = stash show -u
   rc = rebase --continue

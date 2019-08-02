@@ -7,7 +7,7 @@ set relativenumber
 set number
 set termguicolors
 set complete-=i " don't scan included files on autocomplete
-colorscheme base16-ashes
+colorscheme gruvbox
 
 " Custom bindings
 " show the terminal
@@ -33,14 +33,11 @@ autocmd BufRead,BufNewFile *.coffee.erb set filetype=coffee
 autocmd BufRead,BufNewFile *.hbs set filetype=html
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat prettier
+  autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat eslint_d
 augroup END
 
 " GoFmt silent failures
 let g:go_fmt_fail_silently = 1
-
-" Overwrite CtrlP defaults
-let g:ctrlp_by_filename = 0
 
 " Configure Ag.vim to remove the newlines
 let g:ag_prg="ag --column --nogroup"
@@ -49,25 +46,26 @@ let g:ag_prg="ag --column --nogroup"
 let g:elm_format_autosave = 1
 
 " Configure SplitJoin to split Ruby
-let g:splitjoin_trailing_comma = 1
+let g:splitjoin_trailing_comma = 0
 let g:splitjoin_ruby_hanging_args = 0
 let g:splitjoin_ruby_curly_braces = 0
 
 " Disable vim-go's K mapping
 let g:go_doc_keywordprg_enabled = 0
 
-let g:ale_enabled = 0
-
 let g:projectionist_heuristics = {
-  \ "app/assets/javascripts/*.js": {
-  \   "alternate": "spec/javascripts/{}.spec.js"
+  \ "client/*.jsx": {
+  \   "alternate": "client/{dirname}/tests/{basename}.test.js",
+  \   "type": "source"
   \ },
-  \ "spec/javascripts/*.spec.js": {
-  \   "alternate": "app/assets/javascripts/{}.js"
+  \ "client/*.js": {
+  \   "alternate": "client/{dirname}/tests/{basename}.test.js",
+  \   "type": "source"
   \ },
-  \ "app/assets/javascripts/*.coffee": {
-  \   "alternate": "spec/javascripts/{}.spec.coffee"
-  \ },
-  \ "spec/javascripts/*.spec.coffee": {
-  \   "alternate": "app/assets/javascripts/{}.coffee"
+  \ "client/*.test.js": {
+  \   "alternate": [
+  \     "client/{dirname}/../{basename}.jsx",
+  \     "client/{dirname}/../{basename}.js"
+  \   ],
+  \   "type": "test"
   \ }}
